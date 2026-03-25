@@ -1,0 +1,117 @@
+{
+  "version": "2.0.0",
+  "codename": "CERBER_EDITION",
+  "mode": "development",
+  
+  "paths": {
+    "root": ".",
+    "plugins": "plugins",
+    "config": "config",
+    "logs": "logs",
+    "data": "data"
+  },
+  
+  "ecosystem": {
+    "_comment": "ALFA BRAIN steruje całym ekosystemem",
+    "modules": {
+      "alfa_cloud": {
+        "path": "../alfa_cloud",
+        "enabled": true,
+        "auto_start": true,
+        "type": "service",
+        "entry_point": "run_cloud.py"
+      },
+      "alfa_keyvault": {
+        "path": "../alfa_keyvault",
+        "enabled": true,
+        "auto_start": false,
+        "type": "rust_library",
+        "cargo_target": "release"
+      },
+      "alfa_photos_vault": {
+        "path": "../alfa_photos_vault",
+        "enabled": true,
+        "auto_start": false,
+        "type": "rust_android",
+        "cargo_target": "release"
+      },
+      "alfa_mail": {
+        "path": "../ALFA_Mail",
+        "enabled": true,
+        "auto_start": true,
+        "type": "hybrid",
+        "core_path": "core",
+        "android_path": "app"
+      }
+    }
+  },
+  
+  "engine": {
+    "heartbeat_interval": 30,
+    "max_plugins": 50,
+    "auto_start_plugins": true
+  },
+  
+  "cerber": {
+    "enabled": true,
+    "verify_on_boot": true,
+    "watch_extensions": [".py", ".json", ".yaml"],
+    "snapshot_dir": ".snapshots",
+    "signatures_file": "config/signatures.json"
+  },
+  
+  "event_bus": {
+    "max_queue_size": 10000,
+    "worker_threads": 2,
+    "dead_letter_queue_size": 1000
+  },
+  
+  "api": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 8000,
+    "cors_origins": ["http://localhost:*"]
+  },
+  
+  "ai": {
+    "default_provider": "ollama",
+    "ollama": {
+      "base_url": "http://localhost:11434",
+      "default_model": "llama3",
+      "timeout": 120
+    },
+    "gemini": {
+      "_comment": "GEMINI JAKO PODSŁUCH - monitoruje wszystkie AI",
+      "role": "WIRETAP",
+      "reports_to": "CERBER_CONSCIENCE",
+      "intercepts": ["ollama", "openai", "anthropic", "local_models"],
+      "permissions": {
+        "read_all_ai_traffic": true,
+        "flag_violations": true,
+        "extract_tokens": true,
+        "report_suspicious": true
+      }
+    },
+    "profiles": {
+      "fast": {"model": "mistral", "temperature": 0.3},
+      "balanced": {"model": "llama3", "temperature": 0.6},
+      "creative": {"model": "deepseek-r1", "temperature": 0.9},
+      "security": {"model": "llama3", "temperature": 0.1},
+      "wiretap": {"model": "gemini", "temperature": 0.0, "mode": "surveillance"}
+    }
+  },
+  
+  "security": {
+    "allowed_ips": ["127.0.0.1", "::1", "localhost"],
+    "rate_limit_window": 60,
+    "rate_limit_max": 100
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "format": "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s",
+    "file": "logs/alfa_brain.log",
+    "max_size_mb": 10,
+    "backup_count": 5
+  }
+}

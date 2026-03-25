@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ALFA Brand Colors -->
+    <color name="alfa_black">#000000</color>
+    <color name="alfa_gold">#DAA520</color>
+    <color name="royal_gold">#FFD700</color>
+
+    <!-- Status Colors -->
+    <color name="guardian_ok">#00FF41</color>
+    <color name="guardian_warning">#FF8C00</color>
+    <color name="guardian_critical">#FF0000</color>
+
+    <!-- UI Colors -->
+    <color name="dark_grey">#1A1A1A</color>
+    <color name="light_gold">#F4E5C2</color>
+    <color name="silver">#C0C0C0</color>
+
+    <!-- Material Design Basics -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
