@@ -13,10 +13,22 @@ Samotni gracze oraz wielkie serwisy tracą podczas ataków DDoS – każda ze st
 Copyright (c) 2026 Karen Tonoyan – ALFA Foundation
 
 Permission is granted to use this software for personal or internal purposes only.
+ALFA / CERBER LICENSE v1.1
+
+Copyright (c) 2026 Karen Tonoyan – ALFA Foundation
+All rights reserved.
+
+Permission is granted to use this software for personal evaluation purposes only.
 
 You are NOT allowed to:
-- publish this code or any modified versions
-- distribute or sublicense this software
-- use this code commercially without explicit permission
+- publish, distribute, or share this code in any form
+- create forks, mirrors, or public copies
+- use this software commercially
+- modify and redistribute this software
+- create derivative works based on this system or its architecture
 
-All rights reserved.
+This software remains the exclusive property of the author.
+
+Access to this repository does NOT grant ownership.
+
+Violation of this license results in immediate termination of rights.
