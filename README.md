@@ -1,34 +1,57 @@
-Oto przykładowy opis, który możesz umieścić w README.md (wersja polska):
+# DdaAdhd
 
----
+> **Experimental TypeScript web application with books, lessons and marketplace views**
 
-### Opis projektu
+Despite the repository name, the tracked implementation is a full-stack
+TypeScript web-app scaffold rather than a DDoS-defence service. The React
+client contains views for books, lessons, a marketplace, registration and
+administration; the server provides tRPC, authentication helpers, storage and
+Drizzle database definitions.
 
-Wiele dużych serwisów (giganci) często musi mierzyć się samotnie z atakami DDoS – tracąc na tym zarówno oni, jak i cała społeczność internetu. Ta strona (wersja alfa) powstała jako wsparcie i propozycja wspólnego działania: gdy jesteś atakowany przez zorganizowaną armię, samodzielna obrona jest trudna, a czasem wręcz niemożliwa. Dołącz do wspólnej „Alphy”!
+## Structure
 
-**Nasza propozycja:**  
-Obsługujemy setki tysięcy użytkowników naraz, inteligentnie dzieląc ruch na wiele węzłów (node’ów). Wierzymy, że tylko poprzez współpracę można skutecznie bronić się przed dużymi atakami. Nie walcz sam – wezwij wsparcie!
-Teza
-Samotni gracze oraz wielkie serwisy tracą podczas ataków DDoS – każda ze stron. Ten projekt powstał, by przełamać samotność w obliczu zagrożenia. Wspólna obrona jest możliwa dzięki łączeniu sił i dzieleniu węzłów — razem możemy skutecznie odeprzeć nawet największe ataki. Nie walcz sam – dołącz do „Alphy”!
-Copyright (c) 2026 Karen Tonoyan – ALFA Foundation
+```text
+client/src/pages/     Home, Books, Lessons, Marketplace, Admin and Register
+server/               tRPC server, auth, database and storage
+drizzle/              schema relations and initial migration
+userGuide.md          existing user-oriented material
+SECURITY.md            repository security guidance
+```
 
-Permission is granted to use this software for personal or internal purposes only.
-ALFA / CERBER LICENSE v1.1
+## Requirements and local development
 
-Copyright (c) 2026 Karen Tonoyan – ALFA Foundation
-All rights reserved.
+The repository declares pnpm 10.4.1 through its lockfile:
 
-Permission is granted to use this software for personal evaluation purposes only.
+```bash
+pnpm install
+pnpm dev
+```
 
-You are NOT allowed to:
-- publish, distribute, or share this code in any form
-- create forks, mirrors, or public copies
-- use this software commercially
-- modify and redistribute this software
-- create derivative works based on this system or its architecture
+Available validation commands are:
 
-This software remains the exclusive property of the author.
+```bash
+pnpm check
+pnpm test
+```
 
-Access to this repository does NOT grant ownership.
+`pnpm db:push` generates and migrates the Drizzle schema. Use it only with a
+development database after reviewing the target configuration.
 
-Violation of this license results in immediate termination of rights.
+## Configuration
+
+The server includes environment and OAuth helper modules under `server/_core/`.
+The required service values are not documented as a safe sample in this
+repository. Configure them locally and keep database URLs, client secrets and
+session material out of Git.
+
+## Status
+
+The application is experimental. Content-focused page names reflect available
+screens, not a claim that the user flows, authentication, payments or data
+storage are production-ready. The old README text about DDoS is not supported
+by the current tracked application and has been replaced by this source-based
+overview.
+
+## Licence
+
+No root licence file is present.
